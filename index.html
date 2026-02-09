@@ -3,266 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Falafel Harova - Old City Jerusalem</title>
+    <title>Falafel HaRova | Group Logistics & Soldier Support</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            /* PALETTE FROM "LOGO 2" PDF */
+            --brand-brown: #4a3b32; /* Earth/Stability - Main Text */
+            --brand-gold: #ffc107;  /* Falafel/Energy - Tour Guides */
+            --brand-green: #388e3c; /* Freshness/Nature - Soldiers */
+            --brand-stone: #fdfbf7; /* Jewish Quarter Stone - Background */
+            --brand-red: #d32f2f;   /* Alert/Action */
+            --ui-white: #ffffff;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--brand-brown);
+            background-color: var(--brand-stone); /* Warm stone background */
         }
 
+        /* HEADER / LOGO AREA */
         header {
-            background: linear-gradient(135deg, #2d5016 0%, #4a7c29 100%);
-            color: white;
-            padding: 2rem 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            background: var(--ui-white);
+            border-bottom: 1px solid rgba(74, 59, 50, 0.1);
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23f4e4c1" width="1200" height="400"/><circle fill="%234a7c29" cx="200" cy="100" r="30"/><circle fill="%234a7c29" cx="350" cy="150" r="25"/><circle fill="%234a7c29" cx="500" cy="120" r="28"/><circle fill="%234a7c29" cx="650" cy="180" r="32"/><circle fill="%234a7c29" cx="800" cy="140" r="26"/><circle fill="%234a7c29" cx="950" cy="160" r="30"/></svg>');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .section {
-            margin-bottom: 3rem;
-        }
-
-        .section h2 {
-            color: #2d5016;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid #4a7c29;
-            padding-bottom: 0.5rem;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .menu-item {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border-color: #4a7c29;
-        }
-
-        .menu-item h3 {
-            color: #2d5016;
+        .logo-placeholder {
+            font-weight: 800;
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            color: var(--brand-brown);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .menu-item p {
-            color: #666;
-            margin-bottom: 0.5rem;
+        /* DUAL HERO SECTION */
+        .split-hero {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 80vh;
         }
 
-        .price {
-            color: #4a7c29;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .info-card {
-            background: #f9f9f9;
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid #4a7c29;
-        }
-
-        .info-card h3 {
-            color: #2d5016;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .info-card p {
-            color: #555;
-            line-height: 1.8;
-        }
-
-        footer {
-            background: #2d5016;
-            color: white;
+        .split-side {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            transition: all 0.3s ease;
         }
 
-        footer p {
-            opacity: 0.9;
+        /* LEFT: TOUR GROUPS (GOLD THEME) */
+        .side-groups {
+            background-color: var(--brand-gold);
+            color: var(--brand-brown);
+            border-right: 2px solid rgba(0,0,0,0.05);
         }
 
+        /* RIGHT: SOLDIER DONATIONS (GREEN THEME) */
+        .side-soldiers {
+            background-color: var(--brand-green);
+            color: white;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        p { font-size: 1.1rem; max-width: 400px; line-height: 1.5; margin-bottom: 30px; }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        .btn-group { background: var(--brand-brown); color: var(--brand-gold); }
+        .btn-soldier { background: white; color: var(--brand-green); }
+
+        /* FORMS / MODALS */
+        .section-container {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--ui-white);
+            box-shadow: 0 10px 30px rgba(74, 59, 50, 0.1);
+            margin-bottom: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(74, 59, 50, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .full-width { grid-column: span 2; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; 
+            background: var(--brand-stone);
+            color: var(--brand-brown);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+            color: var(--brand-brown);
+        }
+
+        .trust-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white; /* Changed to white for contrast on Green */
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Links in text */
+        a.text-link {
+            color: var(--brand-green);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a.text-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile adjustment */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .hero h2 {
-                font-size: 1.5rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
+            .split-hero { flex-direction: column; }
+            .split-side { min-height: 40vh; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>🥙 Falafel Harova 🥙</h1>
-        <p>Authentic Jerusalem Falafel in the Heart of the Old City</p>
-    </header>
+        <div class="logo-placeholder">FALAFEL HAROVA</div>
+        </header>
 
-    <div class="hero">
-        <h2>Welcome to Falafel Harova</h2>
-        <p>Experience the authentic taste of Jerusalem's finest falafel</p>
+    <div class="split-hero">
+        <div class="split-side side-groups">
+            <h1>Tour Guides</h1>
+            <p>Skip the line. Keep your schedule. Pre-order for groups of 10+ and get priority pickup at the Rova.</p>
+            <a href="#group-form" class="btn btn-group">Book a Time Slot</a>
+        </div>
+        <div class="split-side side-soldiers">
+            <h1>Feed the Frontline</h1>
+            <p>Buy a meal for a soldier on duty in the Old City. We cook it, they eat it, you get the receipt.</p>
+            <div class="trust-counter">1,420</div>
+            <p style="margin-top:0; font-size:0.9rem; opacity:0.9;">Meals donated to date</p>
+            <a href="#soldier-form" class="btn btn-soldier">Donate a Meal (40₪)</a>
+        </div>
     </div>
 
-    <div class="container">
-        <section class="section">
-            <h2>Our Menu</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <h3>Classic Falafel</h3>
-                    <p>Crispy golden falafel balls made from freshly ground chickpeas, served in warm pita with tahini, hummus, and fresh vegetables</p>
-                    <p class="price">₪25</p>
+    <div id="group-form" class="section-container" style="border-top: 5px solid var(--brand-gold);">
+        <h2 style="text-align: center; color: var(--brand-brown);">Group Logistics Command</h2>
+        <p style="text-align: center; opacity: 0.8; margin-bottom: 30px;">
+            <strong>Warning:</strong> Late arrivals >15 mins forfeit priority status.
+        </p>
+        <form onsubmit="sendGroupOrder(event)">
+            <div class="form-grid">
+                <div>
+                    <label>Guide Name</label>
+                    <input type="text" id="g-name" placeholder="Yossi Cohen" required>
                 </div>
-                <div class="menu-item">
-                    <h3>Falafel Deluxe</h3>
-                    <p>Our classic falafel with extra toppings: fried eggplant, pickles, hot sauce, and our special Jerusalem salad</p>
-                    <p class="price">₪30</p>
+                <div>
+                    <label>License Number</label>
+                    <input type="text" id="g-license" placeholder="License #" required>
                 </div>
-                <div class="menu-item">
-                    <h3>Hummus Plate</h3>
-                    <p>Creamy homemade hummus served with olive oil, tahini, fresh pita bread, and pickled vegetables</p>
-                    <p class="price">₪20</p>
+                <div>
+                    <label>Group Size (Pax)</label>
+                    <input type="number" id="g-size" min="10" placeholder="Min 10" required>
                 </div>
-                <div class="menu-item">
-                    <h3>Mixed Plate</h3>
-                    <p>A generous combination of falafel, hummus, tahini, fried eggplant, and fresh salads with warm pita bread</p>
-                    <p class="price">₪35</p>
+                <div>
+                    <label>Pickup Time (Hard Stop)</label>
+                    <input type="datetime-local" id="g-time" required>
                 </div>
-                <div class="menu-item">
-                    <h3>Fresh Salads</h3>
-                    <p>Jerusalem salad, cabbage salad, or our daily special salad, all made fresh with local ingredients</p>
-                    <p class="price">₪15</p>
+                <div class="full-width">
+                    <label>Order Mix</label>
+                    <select id="g-mix">
+                        <option>Standard Mix (80% Falafel, 20% Sabich)</option>
+                        <option>Falafel Only</option>
+                        <option>Vegan Premium (Rova Royale)</option>
+                    </select>
                 </div>
-                <div class="menu-item">
-                    <h3>Drinks</h3>
-                    <p>Fresh lemonade, mint lemonade, soft drinks, or traditional Middle Eastern beverages</p>
-                    <p class="price">₪10</p>
+                <div class="full-width">
+                    <label>Special Notes / Allergies</label>
+                    <textarea id="g-notes" rows="3" placeholder="e.g., 2 Gluten Free, 1 Sesame Allergy"></textarea>
                 </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>About Us</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>Our Story</h3>
-                    <p>Located in the historic Old City of Jerusalem, Falafel Harova has been serving authentic, homemade falafel for generations. Our family recipe combines traditional techniques with the freshest ingredients to create the perfect falafel every time.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Our Promise</h3>
-                    <p>We use only the finest chickpeas, fresh herbs, and traditional spices. Every batch is made fresh throughout the day, ensuring you get the crispiest, most flavorful falafel in Jerusalem. Our vegetables are delivered daily from local markets.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Opening Hours</h3>
-                    <p><strong>Sunday - Thursday:</strong> 9:00 AM - 8:00 PM<br>
-                    <strong>Friday:</strong> 9:00 AM - 3:00 PM<br>
-                    <strong>Saturday:</strong> Closed</p>
-                </div>
-                <div class="info-card">
-                    <h3>Location</h3>
-                    <p>Find us in the Jewish Quarter of the Old City, Jerusalem. Look for our green sign near the main square. Walk through the ancient stone paths and follow the aroma of fresh falafel!</p>
+                <div class="full-width">
+                    <button type="submit" class="btn btn-group" style="width:100%;">Lock In Slot 🟢</button>
                 </div>
             </div>
-        </section>
-
-        <section class="section">
-            <h2>Why Choose Falafel Harova?</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>🌱 100% Vegetarian</h3>
-                    <p>All our dishes are vegetarian and many are vegan-friendly. Perfect for everyone!</p>
-                </div>
-                <div class="info-card">
-                    <h3>🥇 Fresh Daily</h3>
-                    <p>Everything is prepared fresh each day using traditional methods and recipes.</p>
-                </div>
-                <div class="info-card">
-                    <h3>💚 Local Ingredients</h3>
-                    <p>We source our vegetables and herbs from local Jerusalem markets daily.</p>
-                </div>
-                <div class="info-card">
-                    <h3>👨‍🍳 Family Recipe</h3>
-                    <p>Our secret falafel recipe has been passed down through generations.</p>
-                </div>
-            </div>
-        </section>
+        </form>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Falafel Harova - Old City Jerusalem</p>
-        <p>Serving authentic falafel with love and tradition</p>
-    </footer>
+    <div id="soldier-form" class="section-container" style="border-top: 5px solid var(--brand-green);">
+        <h2 style="text-align: center; color: var(--brand-green);">Sponsor a Soldier</h2>
+        <p style="text-align: center;">Choose your impact level. All donations go directly to food costs for uniformed personnel.</p>
+        
+        <div class="form-grid" style="text-align: center; margin-top: 30px;">
+            <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+                <h3>The Sentry</h3>
+                <div style="font-size: 2rem; font-weight: bold; color: var(--brand-green);">40₪</div>
+                <p>1 Full Meal + Drink</p>
+                <button onclick="sendDonation(1)" class="btn btn-soldier" style="background:var(--brand-green); color:white; font-size: 0.9rem;">Donate 1 Meal 🟢</button>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; background: #fffdf7;">
+                <h3>The Squad</h3>
+                <div style="font-size: 2rem; font-weight: bold; color: var(--brand-green);">200₪</div>
+                <p>Feeds 5 Soldiers</p>
+                <button onclick="sendDonation(5)" class="btn btn-soldier" style="background:var(--brand-green); color:white; font-size: 0.9rem;">Donate 5 Meals 🟢</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <h4>Transparency Guarantee</h4>
+            <p style="font-size: 0.9rem; opacity: 0.8;">
+                We post daily photos of units served on our Instagram: 
+                <br>
+                <a href="https://www.instagram.com/falafel_harova" target="_blank" class="text-link">@falafel_harova</a>
+                <br>
+                Your receipt is tax-deductible (Section 46 pending).
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // YOUR WHATSAPP NUMBER
+        const WHATSAPP_NUMBER = "972587709933"; 
+
+        function sendGroupOrder(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('g-name').value;
+            const license = document.getElementById('g-license').value;
+            const size = document.getElementById('g-size').value;
+            const time = document.getElementById('g-time').value;
+            const mix = document.getElementById('g-mix').value;
+            const notes = document.getElementById('g-notes').value;
+
+            // Construct the message
+            const text = `*New Group Order* 🚍%0A` +
+                         `*Guide:* ${name} (${license})%0A` +
+                         `*Pax:* ${size}%0A` +
+                         `*Time:* ${time.replace('T', ' ')}%0A` +
+                         `*Mix:* ${mix}%0A` +
+                         `*Notes:* ${notes}`;
+
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
+        }
+
+        function sendDonation(amount) {
+            const text = `Hi, I want to donate *${amount} meals* for soldiers 🪖.%0APlease send me your Bit/PayBox details!`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
+        }
+    </script>
+
 </body>
 </html>
