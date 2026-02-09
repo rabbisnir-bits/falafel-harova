@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falafel HaRova | Group Logistics & Soldier Support</title>
+    <style>
+        :root {
+            --brand-gold: #FFB700; /* Falafel crisp */
+            --brand-green: #386641; /* Parsley/Soldier Olive */
+            --brand-red: #bc4749; /* Harissa/Urgency */
+            --text-dark: #2d3436;
+            --bg-light: #f4f4f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* DUAL HERO SECTION */
+        .split-hero {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 80vh;
+        }
+
+        .split-side {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* LEFT: TOUR GROUPS */
+        .side-groups {
+            background-color: var(--brand-gold);
+            color: var(--text-dark);
+            border-right: 2px solid rgba(0,0,0,0.1);
+        }
+
+        /* RIGHT: SOLDIER DONATIONS */
+        .side-soldiers {
+            background-color: var(--brand-green);
+            color: white;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        p { font-size: 1.1rem; max-width: 400px; line-height: 1.5; margin-bottom: 30px; }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        .btn-group { background: white; color: var(--text-dark); }
+        .btn-soldier { background: var(--brand-red); color: white; }
+
+        /* FORMS / MODALS (Simulated inline for now) */
+        .section-container {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .full-width { grid-column: span 2; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Fixes padding width issues */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .trust-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--brand-gold);
+            text-shadow: 1px 1px 0 #000;
+        }
+        
+        /* Mobile adjustment */
+        @media (max-width: 768px) {
+            .split-hero { flex-direction: column; }
+            .split-side { min-height: 40vh; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-hero">
+        <div class="split-side side-groups">
+            <h1>Tour Guides</h1>
+            <p>Skip the line. Keep your schedule. Pre-order for groups of 10+ and get priority pickup at the Rova.</p>
+            <a href="#group-form" class="btn btn-group">Book a Time Slot</a>
+        </div>
+        <div class="split-side side-soldiers">
+            <h1>Feed the Frontline</h1>
+            <p>Buy a meal for a soldier on duty in the Old City. We cook it, they eat it, you get the receipt.</p>
+            <div class="trust-counter">1,420</div>
+            <p style="margin-top:0; font-size:0.9rem; opacity:0.8;">Meals donated to date</p>
+            <a href="#soldier-form" class="btn btn-soldier">Donate a Meal (40₪)</a>
+        </div>
+    </div>
+
+    <div id="group-form" class="section-container">
+        <h2 style="text-align: center; color: var(--brand-green);">Group Logistics Command</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            <strong>Warning:</strong> Late arrivals >15 mins forfeit priority status.
+        </p>
+        <form>
+            <div class="form-grid">
+                <div>
+                    <label>Guide Name</label>
+                    <input type="text" placeholder="Yossi Cohen" required>
+                </div>
+                <div>
+                    <label>License Number</label>
+                    <input type="text" placeholder="License #" required>
+                </div>
+                <div>
+                    <label>Group Size (Pax)</label>
+                    <input type="number" min="10" placeholder="Min 10" required>
+                </div>
+                <div>
+                    <label>Pickup Time (Hard Stop)</label>
+                    <input type="datetime-local" required>
+                </div>
+                <div class="full-width">
+                    <label>Order Mix</label>
+                    <select>
+                        <option>Standard Mix (80% Falafel, 20% Sabich)</option>
+                        <option>Falafel Only</option>
+                        <option>Vegan Premium (Rova Royale)</option>
+                    </select>
+                </div>
+                <div class="full-width">
+                    <label>Special Notes / Allergies</label>
+                    <textarea rows="3" placeholder="e.g., 2 Gluten Free, 1 Sesame Allergy"></textarea>
+                </div>
+                <div class="full-width">
+                    <button type="submit" class="btn btn-group" style="width:100%; background: var(--text-dark); color: white;">Lock In Slot</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="soldier-form" class="section-container" style="border-top: 5px solid var(--brand-red);">
+        <h2 style="text-align: center; color: var(--brand-red);">Sponsor a Soldier</h2>
+        <p style="text-align: center;">Choose your impact level. All donations go directly to food costs for uniformed personnel.</p>
+        
+        <div class="form-grid" style="text-align: center; margin-top: 30px;">
+            <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+                <h3>The Sentry</h3>
+                <div style="font-size: 2rem; font-weight: bold;">40₪</div>
+                <p>1 Full Meal + Drink</p>
+                <button class="btn btn-soldier" style="font-size: 0.9rem;">Donate 1</button>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; background: #fff8f8;">
+                <h3>The Squad</h3>
+                <div style="font-size: 2rem; font-weight: bold;">200₪</div>
+                <p>Feeds 5 Soldiers</p>
+                <button class="btn btn-soldier" style="font-size: 0.9rem;">Donate 5</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <h4>Transparency Guarantee</h4>
+            <p style="font-size: 0.9rem; color: #666;">
+                We post daily photos of units served on our Instagram @FalafelHaRova. 
+                <br>Your receipt is tax-deductible (Section 46 pending).
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
